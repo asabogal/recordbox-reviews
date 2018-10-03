@@ -1,4 +1,9 @@
 <h1>User Show Page</h1>
-<h2> <%= @user.username %> </h2>
 
-<%= link_to "Log Out", '/logout', {method: 'post'} %>
+<% if logged_in? %>
+  <h1><%= @user.username %></h1>
+  <h2>Email: <%= @user.email %></h2>
+  <h2>Facebook UID: <%= @user.uid unless @user.uid.empty?%></h2>
+
+  <%= link_to "Log Out", '/logout', {method: 'post'} %>
+<% end %>

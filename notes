@@ -20,7 +20,9 @@ has_many :reviews, through: :records
 
 Record
 belongs_to :user
+has_many :tracks
 has_many :reviews
+accepts_nested_attributes_for :tracks
 
 image? — how? / use gem?!
 	artist
@@ -30,7 +32,14 @@ image? — how? / use gem?!
 	cat
 t.date :released
 	genre
-	A1
+
+	Track
+	belongs_record
+		name
+		side = A2
+		custom method display_name
+		custom method .order(display_name DESC)
+	A1 - Track Name
 	A2
 	B1
 	B2
@@ -38,6 +47,11 @@ t.date :released
 	C2
 	D1
 	D3
+
+	new Record form
+		Add Tracks to Record
+		fields_for:
+			form_for @tracks ===> #tracks#new
 
 
 reviews

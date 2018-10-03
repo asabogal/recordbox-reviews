@@ -2,9 +2,9 @@ Rails.application.routes.draw do
 
   root 'welcome#home'
 
-  get '/signup', to:'users#new', as: 'new_user'
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
+  get '/auth/facebook/callback', to: 'sessions#create'
   post '/logout', to: 'sessions#destroy'
 
   resources :users, only: [:index, :show, :create]
