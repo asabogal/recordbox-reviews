@@ -1,0 +1,62 @@
+RAILS PROJECT
+
+rails new project-test --skip-active-storage
+
+IDEA: Record Reviews
+
+Models:
+
+User
+has_many :records
+has_many :reviews, through: :records
+
+	username
+	email
+	password_digest
+	uid
+
+
+
+Record
+belongs_to :user
+has_many :reviews
+
+image? — how? / use gem?!
+	artist
+	title
+	label
+	format
+	cat
+t.date :released
+	genre
+	A1
+	A2
+	B1
+	B2
+	C1
+	C2
+	D1
+	D3
+
+
+reviews
+belongs_to :user
+belongs_to :records
+
+	rating
+	comment
+	owns?
+	wants? 
+
+
+Project Dev help:
+
+— Authentication / Creating Signup/Login/Session/Helper Methods: —
+https://www.youtube.com/watch?time_continue=640&v=cvGSQcXu8pg
+
+Basic Login:
+https://www.railstutorial.org/book/basic_login
+
+Adding Images:
+Paper Clip
+https://github.com/thoughtbot/paperclip
