@@ -1,11 +1,17 @@
 class UsersController < ApplicationController
-  before_action :find_user, only: [:show]
+  before_action :find_user, only: [:show, :collection]
+
+  def index
+  end
 
   def new
     @user = User.new
   end
 
   def show
+  end
+
+  def collection
   end
 
   def create
