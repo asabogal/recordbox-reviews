@@ -14,6 +14,10 @@ gem 'jbuilder', '~> 2.5'
 gem 'bootsnap', '>= 1.1.0', require: false
 
 gem 'bcrypt'
+gem 'pry'
+
+gem 'omniauth'
+gem 'omniauth-facebook'
 
 
 group :development, :test do
