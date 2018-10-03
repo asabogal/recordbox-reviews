@@ -9,9 +9,12 @@ class UsersController < ApplicationController
   end
 
   def show
+    if !logged_in?
+      redirect_to '/'
+    end
   end
 
-  def collection
+  def recordbox
   end
 
   def create
@@ -33,7 +36,7 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:username, :email, :password)
+    params.require(:user).permit(:username, :email, :password, :password_confirmation)
   end
 
 
