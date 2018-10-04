@@ -24,14 +24,19 @@ has_many :tracks
 has_many :reviews
 accepts_nested_attributes_for :tracks
 
-image? — how? / use gem?!
+ATTRIBUTES TO ADD:
+image? — how? / use gem?! #-> add this when styling at end?
+date - figure out how to add date attribute... format?
+
+
 	artist
 	title
 	label
 	format
 	cat
-t.date :released
+
 	genre
+	user.id
 
 	Track
 	belongs_record
@@ -47,7 +52,7 @@ t.date :released
 	C2
 	D1
 	D3
-s
+
 	new Record form
 		Add Tracks to Record
 		fields_for: (remember to use .build method on controller or in this form)
