@@ -1,3 +1,14 @@
+<% if @user.errors.any? %>
+  <div class="warning">
+    <h2>There were some errors:</h2>
+    <ul>
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
 <h1>Signup!</h1>
 
 <%= form_for @user do |f| %>

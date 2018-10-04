@@ -9,9 +9,6 @@ class UsersController < ApplicationController
   end
 
   def show
-    if !logged_in?
-      redirect_to '/'
-    end
   end
 
   def recordbox
@@ -24,7 +21,7 @@ class UsersController < ApplicationController
       redirect_to user_path(@user)
     else
       flash[:message] = "Incorrect information. Please try again!"
-      redirect_to new_user_path
+      render :new
     end
   end
 

@@ -19,7 +19,7 @@ class SessionsController < ApplicationController
           login!
           redirect_to user_path(@user)
       else
-          flash[:message] = "Wrong credentials. Please try again"
+          flash[:message] = "No such user. Please try again."
           redirect_to '/login'
       end
     end

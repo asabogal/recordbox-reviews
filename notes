@@ -47,10 +47,10 @@ t.date :released
 	C2
 	D1
 	D3
-
+s
 	new Record form
 		Add Tracks to Record
-		fields_for:
+		fields_for: (remember to use .build method on controller or in this form)
 			form_for @tracks ===> #tracks#new
 
 
