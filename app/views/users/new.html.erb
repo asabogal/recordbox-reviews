@@ -1,5 +1,5 @@
 <% if @user.errors.any? %>
-  <div class="warning">
+  <div class="alert alert-danger" role="alert">
     <h2>There were some errors:</h2>
     <ul>
       <% @user.errors.full_messages.each do |message| %>
@@ -10,15 +10,16 @@
 <% end %>
 
 <h1>Signup!</h1>
-
-<%= form_for @user do |f| %>
-  <%= f.label :username, "Username:" %>
-  <%= f.text_field :username %><br>
-  <%= f.label :email, "Email:"  %>
-  <%= f.text_field :email %><br>
-  <%= f.label :password, "Password:" %>
-  <%= f.password_field :password %><br>
-  <%= f.label :password_confirmation, "Confirm Password:" %>
-  <%= f.password_field :password_confirmation %><br>
-  <%= f.submit %>
-<% end %>
+<div class="form-group">
+  <%= form_for @user do |f| %>
+    <%= f.label :username, "Username:" %>
+    <%= f.text_field :username, class: "form-control" %><br>
+    <%= f.label :email, "Email:"  %>
+    <%= f.text_field :email, class: "form-control" %><br>
+    <%= f.label :password, "Password:" %>
+    <%= f.password_field :password, class: "form-control" %><br>
+    <%= f.label :password_confirmation, "Confirm Password:" %>
+    <%= f.password_field :password_confirmation, class: "form-control" %><br>
+    <%= f.submit %>
+  <% end %>
+</div>

@@ -66,12 +66,13 @@
    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
  }
 
+
  .warning {
-   font-size: 1.5em;
+   font-size: 1em;
    margin: 10px auto;
    max-width: 960px;
    padding: 1%; /18px / 800px
-   width: 95%;
+   width: 90%;
    background: #EFDFDE;
    color: #9E4A46;
 
@@ -3900,9 +3901,14 @@
    -ms-flex-wrap: wrap;
    flex-wrap: wrap;
    padding-left: 0;
-   margin-bottom: 0;
+   margin-bottom: 1;
    list-style: none;
  }
+
+ .navbar-default {
+    background-color: #f8f8f8;
+    border-color: #e7e7e7;
+}
 
  .nav-link {
    display: block;
