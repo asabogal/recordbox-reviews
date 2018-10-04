@@ -9,14 +9,18 @@
       </button>
       <a href="#" class="navbar-brand">RecordboxReviews!</a>
     </div>
+
     <div class="collapse navbar-collapse" id="bs-nav-demo">
+      <% if logged_in? %>
       <ul class="nav navbar-nav">
+        <li><a href="#">Profile</a></li>
         <li><a href="#">Your Recordbox</a></li>
         <li><a href="#">Add Record</a></li>
       </ul>
+      <% end %>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">Sign Up</a></li>
-        <li><a href="#">Login</a></li>
+        <li><%= link_to "Sign Up", '/signup' %></a></li>
+        <li><%= link_to "Login", '/login' %></li>
       </ul>
     </div>
   </div>
