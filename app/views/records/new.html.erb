@@ -1,7 +1,7 @@
+
+Try using if performed? method here to render the new track form only when re-rendered???
+
 <h1>Create New Record</h1>
-
-#add_partial for new form
-
 
 <%= form_for @record do |f| %>
 
@@ -25,6 +25,12 @@
 
   <%= f.label :genre %>
   <%= f.text_field :genre %><br>
-<% end %>
 
-  <!--add functionality to add tracks -->
+  -------------------------- <br>
+<br>
+  <%= f.label :track_name %>
+  <%= f.text_field :track_name %><br>
+
+  <%= f.submit %>
+
+<% end %>
