@@ -1,42 +1,62 @@
-<div class="show-section">
-  <div class="col-12 col-md-7 col-lg-8 col-xl-6 order-1 order-md-2">
-    <%= image_tag(@record.image) %>
-    <div class="top-section">
-      <div class="heading">
-        <div class="col-12">
-          <div class="artist-detail">
-            <h2><%= @record.artist.upcase %></h2>
+
+    <div class="row">
+      <div class="col-md-4">
+        <div style="width:300px; height:auto">
+          <%= image_tag(@record.image, style:'width:100%') %>
           </div>
-          <div class="title-detail">
-            <h3><%= @record.title %></h3>
+          <br>
+          <div class="">
+            <% if logged_in? %>
+              <%= link_to "Add Review", "#", class: 'btn btn-primary' %>
+              <%= link_to "Edit Record", edit_record_path, class: 'btn btn-primary' %>
+              <%= link_to "Delete Record", "#", class: 'btn btn-primary' %>
+            <% end %>
           </div>
-          <div class="label-detail">
-            <h3><%= @record.label %></h3>
+
+        </div>
+          <div class="col-md-4">
+            <div class="top">
+              <h2> <strong><%= @record.artist.upcase %></strong> </h2>
+              <h3><%= @record.title %></h3>
+              <h4><%= @record.label %></h4>
+            </div>
+            <br>
+              <div class="meta-record">
+                <strong>Format:</strong> <%= @record.format %>
+                <br><strong>Cat:</strong> <%= @record.cat %>
+                <br><strong>Released:</strong> <%= @record.released %>
+                <br><strong>Genre:</strong> <%= @record.genre %>
+              </div>
+              <table class="table borderless">
+                <tbody>
+                  <tr>
+                    <td> <h3>Tracklist</h3> </td>
+                    <tr>
+                      <% @record.tracks.each do |t| %>
+                    </tr>
+                    <td><%= t.name %></td>  <br>
+                    <% end %>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="hidden-xs col-md-4">
+              <div class="reviews">
+                <h2> <strong><%= "reviews dlkflklklkslkfklsdkfkldslk" %></strong> </h2>
+                <h2> <strong><%= "reviews" %></strong> </h2>
+                <h2> <strong><%= "reviews" %></strong> </h2>
+                <h2> <strong><%= "reviews" %></strong> </h2>
+                <h2> <strong><%= "reviews" %></strong> </h2>
+                <h2> <strong><%= "reviews" %></strong> </h2>
+                <h2> <strong><%= "reviews" %></strong> </h2>
+                <h2> <strong><%= "reviews" %></strong> </h2>
+                <h2> <strong><%= "reviews" %></strong> </h2>
+                <h2> <strong><%= "reviews" %></strong> </h2>
+                <h2> <strong><%= "reviews" %></strong> </h2>
+                <h2> <strong><%= "reviews" %></strong> </h2>
+                <h2> <strong><%= "reviews" %></strong> </h2>
+                <h2> <strong><%= "reviews" %></strong> </h2>
+
+              </div>
           </div>
         </div>
-      </div>
-    </div>
-
-      <div class="meta-record">
-  				<strong>Format:</strong> <%= @record.format %>
-  				<br><strong>Cat:</strong> <%= @record.cat %>
-  				<br><strong>Released:</strong> <%= @record.released %>
-  				<br><strong>Genre:</strong> <%= @record.genre %>
-  			</div>
-
-
-      <table class="table">
-        <tbody>
-          <tr>
-            <td> <h3>Tracklist</h3> </td>
-            <tr>
-              <% @record.tracks.each do |t| %>
-            </tr>
-            <td><%= t.name %></td>  <br>
-            <% end %>
-          </tr>
-        </tbody>
-      </table>
-
-  </div>
-</div>

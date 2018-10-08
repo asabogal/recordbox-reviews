@@ -24,6 +24,13 @@
 @import "variables";
 @import "bootstrap-custom";
 
+footer.branding {
+    border-top: 2px solid #ccc;
+    margin-top: 20px;
+    padding-top: 20px;
+    background-color: #F8F8F8;
+  }
+
 //  :root {
 //    --blue: #007bff;
 //    --indigo: #6610f2;
@@ -1554,12 +1561,12 @@
 //    background-color: transparent;
 //  }
 //
-//  .table th,
-//  .table td {
-//    padding: 0.75rem;
-//    vertical-align: top;
-//    border-top: 1px solid #dee2e6;
-//  }
+ .table th,
+ .table td {
+   padding: 0.75rem;
+   vertical-align: top;
+
+ }
 //
 //  .table thead th {
 //    vertical-align: bottom;
