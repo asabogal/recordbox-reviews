@@ -1,25 +1,23 @@
-<% if @user.errors.any? %>
-  <div class="alert alert-danger" role="alert">
-    <h4>There were some errors:</h4>
-    <ul>
-      <% @user.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-    </ul>
-  </div>
-<% end %>
 
-<h1>Signup!</h1>
-<div class="form-group">
-  <%= form_for @user do |f| %>
-    <%= f.label :username, "Username:" %>
-    <%= f.text_field :username, class: "form-control" %><br>
-    <%= f.label :email, "Email:"  %>
-    <%= f.text_field :email, class: "form-control" %><br>
-    <%= f.label :password, "Password:" %>
-    <%= f.password_field :password, class: "form-control" %><br>
-    <%= f.label :password_confirmation, "Confirm Password:" %>
-    <%= f.password_field :password_confirmation, class: "form-control" %><br>
-    <%= f.submit %>
-  <% end %>
+<%= render "layouts/errors", object: @user %>
+
+<h1 class="text-center">Sign Up!</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-md-offset-3 col-md-6">
+      <div class="form-group">
+        <%= form_for @user do |f| %>
+          <%= f.label :username, "Username:" %>
+          <%= f.text_field :username, class: "form-control" %><br>
+          <%= f.label :email, "Email:"  %>
+          <%= f.text_field :email, class: "form-control" %><br>
+          <%= f.label :password, "Password:" %>
+          <%= f.password_field :password, class: "form-control" %><br>
+          <%= f.label :password_confirmation, "Confirm Password:" %>
+          <%= f.password_field :password_confirmation, class: "form-control" %><br>
+          <%= f.submit "Sign Up", class: 'btn btn-primary btn-block' %>
+        <% end %>
+      </div>
+    </div>
+  </div>
 </div>
