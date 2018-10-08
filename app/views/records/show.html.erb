@@ -8,7 +8,7 @@
           <div class="">
             <% if logged_in? %>
               <%= link_to "Add Review", "#", class: 'btn btn-primary' %>
-              <%= link_to "Edit Record", edit_record_path, class: 'btn btn-primary' %>
+              <%= link_to "Edit Record", edit_record_path(@record), class: 'btn btn-primary' %>
               <%= link_to "Delete Record", "#", class: 'btn btn-primary' %>
             <% end %>
           </div>
@@ -32,9 +32,9 @@
                   <tr>
                     <td> <h3>Tracklist</h3> </td>
                     <tr>
-                      <% @record.tracks.each do |t| %>
+                      <% @record.tracks.each_with_index do |t, i| %>
                     </tr>
-                    <td><%= t.name %></td>  <br>
+                    <td><%= "#{i+1} - #{t.name}" %>  </td>  <br>
                     <% end %>
                   </tr>
                 </tbody>

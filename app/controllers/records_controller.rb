@@ -13,6 +13,11 @@ class RecordsController < ApplicationController
   end
 
   def edit
+    if @record.user == current_user
+    else
+      flash.now[:message] = "You don't have permision to do that!"
+      redirect_to '/'
+    end
   end
 
   #post/patch
@@ -30,6 +35,18 @@ class RecordsController < ApplicationController
   end
 
   def update
+    if @record && @record.user == current_user
+      @record.update(record_params)
+        if @record.save
+          redirect_to record_path(@record)
+        else
+          flash.now[:message] = "<strong>Please try again. There were some errors:</strong><br>".html_safe + @record.errors.full_messages.join("<br/>").html_safe
+          render :edit
+        end
+    else
+      flash[:message] = "Record not found or you don't have permission to do that"
+      redirect_to '/'
+    end
   end
 
   def destroy

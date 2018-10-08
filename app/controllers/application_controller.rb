@@ -14,7 +14,8 @@ class ApplicationController < ActionController::Base
   end
 
   def require_login
-    redirect_to '/' if !logged_in?
+    flash[:message] = "Please login to do that"
+    redirect_to '/login' if !logged_in?
   end
 
   def authorized_user?
