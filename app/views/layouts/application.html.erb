@@ -11,12 +11,12 @@
   </head>
 
   <body>
-    <% if flash[:message] %>
-    <div class="alert alert-danger"><%= flash[:message] %></div>
-    <% end %>
+      <% if flash[:message] %>
+      <div class="alert alert-danger text-center"> <%= flash[:message] %></div>
+      <% end %>
+      </div>
 
     <%= render "/layouts/navigation" %>
-
 
     <div class="container">
         <%= yield %>
