@@ -20,7 +20,7 @@ class UsersController < ApplicationController
       login!
       redirect_to user_path(@user)
     else
-      flash[:message] = "Incorrect information. Please try again!"
+      flash.now[:message] = "<strong>Please try again. There were some errors:</strong><br>".html_safe + @user.errors.full_messages.join("<br/>").html_safe
       render :new
     end
   end
