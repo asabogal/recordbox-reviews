@@ -1,5 +1,42 @@
-<h1><%= @record.title %></h1>
+<div class="show-section">
+  <div class="col-12 col-md-7 col-lg-8 col-xl-6 order-1 order-md-2">
 
-<% @record.tracks.each do |t| %>
-<%= t.name %> <br>
-<% end %>
+    <div class="top-section">
+      <div class="heading">
+        <div class="col-12">
+          <div class="artist-detail">
+            <h2><%= @record.artist.upcase %></h2>
+          </div>
+          <div class="title-detail">
+            <h3><%= @record.title. %></h3>
+          </div>
+          <div class="label-detail">
+            <h3><%= @record.label %></h3>
+          </div>
+        </div>
+      </div>
+    </div>
+
+      <div class="meta-record">
+  				<strong>Format:</strong> <%= @record.format %>
+  				<br><strong>Cat:</strong> <%= @record.cat %>
+  				<br><strong>Released:</strong> <%= @record.released %>
+  				<br><strong>Genre:</strong> <%= @record.genre %>
+  			</div>
+
+
+      <table class="table">
+        <tbody>
+          <tr>
+            <td> <h3>Tracklist</h3> </td>
+            <tr>
+              <% @record.tracks.each do |t| %>
+            </tr>
+            <td><%= t.name %></td>  <br>
+            <% end %>
+          </tr>
+        </tbody>
+      </table>
+
+  </div>
+</div>
