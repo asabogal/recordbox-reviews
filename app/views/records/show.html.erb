@@ -1,1 +1,5 @@
-<%= @record.title %>
+<h1><%= @record.title %></h1>
+
+<% @record.tracks.each do |t| %>
+<%= t.name %> <br>
+<% end %>
