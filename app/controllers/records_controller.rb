@@ -1,5 +1,5 @@
 class RecordsController < ApplicationController
-  before_action :find_record, only: [:show, :edit, :update]
+  before_action :find_record, only: [:show, :edit, :update, :destroy]
 
   def index
   end
@@ -50,6 +50,13 @@ class RecordsController < ApplicationController
   end
 
   def destroy
+    if @record.user == current_user
+      @record.delete
+      redirect_to user_recordbox_path(current_user)
+    else
+      flash.now[:message] = "You don't have permision to do that!"
+      redirect_to '/'
+    end
   end
 
 

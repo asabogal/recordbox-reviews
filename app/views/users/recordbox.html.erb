@@ -1,11 +1,9 @@
-<h1><%=@user.username%></h1>
-
-
-
-
+<h1 class="text-center"><%="#{@user.username.titleize}'s Recordbox:"%></h1>
+<br>
 <div class="row">
   <% @records.each do |record| %>
     <div class="col-sm-6 col-md-3">
+      <h4 class="text-center"> <%= "#{record.artist} - #{record.title}" %> </h4>
       <div class="thumbnail">
         <%= link_to image_tag(record.image, style:'width:100%'), record %>
       </div>

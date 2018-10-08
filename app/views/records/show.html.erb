@@ -9,7 +9,7 @@
             <% if logged_in? %>
               <%= link_to "Add Review", "#", class: 'btn btn-primary' %>
               <%= link_to "Edit Record", edit_record_path(@record), class: 'btn btn-primary' %>
-              <%= link_to "Delete Record", "#", class: 'btn btn-primary' %>
+              <%= link_to "Delete Record", @record, method: :delete, data: { confirm: "Are you sure you want to delete this record?" }, class: 'btn btn-primary' %>
             <% end %>
           </div>
 
