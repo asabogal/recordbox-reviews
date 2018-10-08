@@ -34,7 +34,7 @@ gem 'pry'
 gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'dotenv-rails'
-
+gem 'activestorage'
 gem 'bootstrap-sass'
 gem 'simple_form'
 gem 'cocoon', '>= 1.2.11'

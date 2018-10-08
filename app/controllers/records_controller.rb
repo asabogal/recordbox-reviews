@@ -38,7 +38,7 @@ class RecordsController < ApplicationController
   private
 
   def record_params
-    params.require(:record).permit(:artist, :title, :label, :format, :cat, :release, :genre, :user_id, tracks_attributes: Track.attribute_names.map(&:to_sym).push(:_destroy))
+    params.require(:record).permit(:artist, :title, :label, :format, :cat, :release, :genre, :image, :user_id, tracks_attributes: Track.attribute_names.map(&:to_sym).push(:_destroy))
   end
 
 end
