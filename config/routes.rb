@@ -11,6 +11,8 @@ Rails.application.routes.draw do
   get '/signup', to:'users#new', as: 'new_user'
   get '/users/:id/recordbox', to: 'users#recordbox', as: 'user_recordbox'
 
-  resources :records
+  resources :records do
+    resources :reviews, only: [:new, :create, :edit, :update]
+  end
 
 end
