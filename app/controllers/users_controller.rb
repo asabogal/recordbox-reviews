@@ -5,7 +5,12 @@ class UsersController < ApplicationController
   end
 
   def new
-    @user = User.new
+    if !logged_in?
+      @user = User.new
+    else
+      flash[:message] = "You already have an account"
+      redirect_to user_path(current_user)
+    end
   end
 
   def show

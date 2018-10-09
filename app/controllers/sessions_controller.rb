@@ -1,7 +1,11 @@
 class SessionsController < ApplicationController
 
   def new
-    @user = User.new
+    if !logged_in?
+      @user = User.new
+    else
+      redirect_to user_path(current_user)
+    end
   end
 
   def create
