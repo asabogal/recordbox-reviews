@@ -2,6 +2,7 @@ class RecordsController < ApplicationController
   before_action :find_record, only: [:show, :edit, :update, :destroy]
 
   def index
+    @records = Record.all
   end
 
   def show

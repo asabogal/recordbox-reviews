@@ -14,4 +14,8 @@ class Record < ApplicationRecord
   validates :genre, presence: true
   validates :tracks, presence: true
 
+  def avg_review
+    self.reviews.average(:rating).to_i
+  end
+
 end
