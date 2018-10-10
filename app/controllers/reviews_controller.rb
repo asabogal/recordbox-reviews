@@ -11,6 +11,15 @@ class ReviewsController < ApplicationController
 
 
   def create
+    @review = Review.new(review_params)
+    @review.user = current_user
+    @review.record = Record.find(params[:record_id])
+    if @review.save
+      redirect_to record_path(@review.record)
+    else
+      flash.now[:message] = "Error. Please try again!"
+      render :new
+    end
   end
 
   def update
