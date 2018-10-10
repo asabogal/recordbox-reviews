@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   get '/users/:id/recordbox', to: 'users#recordbox', as: 'user_recordbox'
 
   resources :records do
-    resources :reviews, only: [:new, :create, :edit, :update]
+    resources :reviews, only: [:new, :create, :edit, :update, :destroy]
   end
 
 end

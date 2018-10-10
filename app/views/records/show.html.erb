@@ -41,19 +41,22 @@
               </table>
             </div>
             <div class="hidden-xs col-md-4">
-              <h2 class="text-center">Reviews</h2>
-              <div class="reviews">
-              <% @record.reviews.each do |review| %>
-                  <p> <strong> <%= review.user.username.titleize %> says: </strong>
-                    <p><%= review.comment %></p>
-                    <div class="star-rating" data-score= <%= review.rating %> ></div><br>
-                    <strong> Favorite Track: </strong>
-                    <%= review.favorite_track %></strong><br>
-                    <% if logged_in? && current_user == review.user %>
-                    <div class="text-right">
-                      <%= link_to "Edit", edit_record_review_path(review.record, review) %> |
-                      <%= link_to "Remove", edit_record_review_path(@record) %>
-                    </div>
+              <% if !@record.reviews.empty?  %>
+                <h2 class="text-center">Reviews</h2>
+
+                <div class="reviews">
+                <% @record.reviews.each do |review| %>
+                    <p> <strong> <%= review.user.username.titleize %> says: </strong>
+                      <p><%= review.comment %></p>
+                      <div class="star-rating" data-score= <%= review.rating %> ></div><br>
+                      <strong> Favorite Track: </strong>
+                      <%= review.favorite_track %></strong><br>
+                      <% if logged_in? && current_user == review.user %>
+                      <div class="text-right">
+                        <%= link_to "Edit", edit_record_review_path(review.record, review) %> |
+                        <%= link_to "Remove", record_review_path(review.record, review), method: :delete %>
+                      </div>
+                      <% end %>
                     <% end %>
                     ___________________________________________<br></br>
                 <% end %>
