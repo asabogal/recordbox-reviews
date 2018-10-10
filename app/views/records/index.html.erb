@@ -1,0 +1,17 @@
+
+<h1 class="text-center"> Record Index:</h1>
+<br>
+<a href="/records?sort=raiting_up">Rating</a>
+<div class="row">
+  <% @records.each do |record| %>
+    <div class="col-sm-6 col-md-3">
+      <h4 class="text-center"> <%= "#{record.artist} - #{record.title}" %> </h4>
+      <div class="star-rating text-center" data-score= <%= record.avg_review %> ></div><br>
+      <div class="thumbnail">
+        <%= link_to image_tag(record.image, style:'width:100%'), record_path(record) %>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<%= render "script" %>
