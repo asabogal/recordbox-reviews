@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   has_many :records
-  has_many :reviews, through: :records
+  has_many :reviews
+  has_many :reviewed_records, through: :reviews, source: :record
   has_secure_password
 
   validates :username, presence: true
