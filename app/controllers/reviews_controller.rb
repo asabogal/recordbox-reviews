@@ -6,6 +6,8 @@ class ReviewsController < ApplicationController
   end
 
   def edit
+    @review = Review.find(params[:id])
+    @record = Record.find(params[:record_id])
   end
 
 
@@ -23,6 +25,13 @@ class ReviewsController < ApplicationController
   end
 
   def update
+    @review = Review.find(params[:id])
+      @review.update(review_params)
+      if @review.save
+        redirecto_to @review.record
+      else
+        render :edit
+      end
   end
 
   private

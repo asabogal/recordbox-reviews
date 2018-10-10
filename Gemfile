@@ -36,9 +36,7 @@ gem 'omniauth-facebook'
 gem 'dotenv-rails'
 gem 'activestorage'
 gem 'bootstrap-sass'
-gem 'simple_form'
 gem 'cocoon', '>= 1.2.11'
-
 
 group :test do
   gem 'capybara', '>= 2.15'

@@ -1,0 +1,24 @@
+<div class="container">
+  <h1 class="text-center">Review Record</h1>
+    <div class="row">
+      <div class="col-md-offset-3 col-md-6">
+        <div class="form-group">
+          <%= form_for ([@record, @review])do |f| %>
+          <br></br>
+          <%= f.collection_select :rating, [1, 2, 3, 4, 5], :to_i, :to_i, {:prompt => "Rate Record:"}, class: "form-control" %> <br>
+            <%= f.label :comment, "Comments:"  %>
+            <%= f.text_area :comment, maxlength: 150, class: "form-control" %><br>
+            <%= f.label :favorite_track, "Favorite Track:" %> <br>
+              <%= f.collection_radio_buttons :favorite_track, @record.tracks, :name, :name do |b| %>
+              <div class: "form-control">
+                <%= b.radio_button %>
+                <%= b.label %>
+              </div>
+              <% end %>
+              <br></br>
+            <%= f.submit "Review", class: 'btn btn-primary btn-block' %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+</div>
