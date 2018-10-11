@@ -21,8 +21,18 @@ class RecordsController < ApplicationController
     end
   end
 
-  def rating_down
-    @records = Record.rating_down
+  def rating_desc
+    @records = Record.rating_desc
+    render action: :index
+  end
+
+  def released_desc
+    @records = Record.released_desc
+    render action: :index
+  end
+
+  def released_asc
+    @records = Record.released_asc
     render action: :index
   end
 
@@ -41,7 +51,6 @@ class RecordsController < ApplicationController
   end
 
   def update
-    binding.pry
     if @record && @record.user == current_user
       @record.update(record_params)
         if @record.save

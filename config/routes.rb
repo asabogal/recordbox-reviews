@@ -13,7 +13,9 @@ Rails.application.routes.draw do
 
   resources :records do
     collection do
-      get :rating_down
+      get :rating_desc
+      get :released_desc
+      get :released_asc
     end
     resources :reviews, only: [:new, :create, :edit, :update, :destroy]
   end

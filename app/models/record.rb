@@ -19,6 +19,8 @@ class Record < ApplicationRecord
     self.reviews.average(:rating).to_i
   end
 
-  scope :rating_down, ->{ order("avg_review DESC")}
+  scope :rating_desc, ->{ order("avg_review DESC")}
+  scope :released_desc, ->{ order("released DESC")}
+  scope :released_asc, ->{ order("released ASC")}
 
 end

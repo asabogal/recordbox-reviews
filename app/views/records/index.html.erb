@@ -2,9 +2,11 @@
 <h1 class="text-center"> Record Index:</h1>
 <div class="text-center">
 <strong>Sort by</strong><br>
-  <%= link_to "Rating", rating_down_records_path %>
+  <%= link_to "Rating", rating_desc_records_path %> |
+  <%= link_to "Newest", released_desc_records_path %> |
+  <%= link_to "Oldest", released_asc_records_path %>
 </div>
-
+<br></br>
 <div class="row">
   <% @records.each do |record| %>
     <div class="col-sm-6 col-md-3">
