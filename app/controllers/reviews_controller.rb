@@ -1,4 +1,5 @@
 class ReviewsController < ApplicationController
+  before_action :require_login
 
   def new
     @review = Review.new
@@ -46,6 +47,9 @@ class ReviewsController < ApplicationController
 
   def review_params
     params.require(:review).permit(:rating, :comment, :favorite_track, :record_id)
+  end
+
+  def find_review
   end
 
   def add_average_review

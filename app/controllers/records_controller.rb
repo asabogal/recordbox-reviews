@@ -1,5 +1,6 @@
 class RecordsController < ApplicationController
   before_action :find_record, only: [:show, :edit, :update, :destroy]
+  before_action :require_login, except: [:show]
 
   def index
     @records = Record.all

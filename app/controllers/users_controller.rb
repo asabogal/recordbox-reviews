@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :find_user, only: [:show, :recordbox, :reviewed_records]
+  before_action :require_login, except: [:new]
 
   def index
     @users = User.all
@@ -9,51 +10,36 @@ class UsersController < ApplicationController
     if !logged_in?
       @user = User.new
     else
-      flash[:message] = "You already have an account"
+      flash[:message] = "You already have an account and are logged in."
       redirect_to user_path(current_user)
     end
   end
 
   def show
-    if authorized_user?
-      render :show
-    else
-      flash[:message] = "You don't have permision to do that!"
-      redirect_to '/'
-    end
   end
 
   def recordbox
     @records = @user.records
-    if logged_in?
       if authorized_user?
         render :recordbox
       else
+        flash[:message] = "You don't have permision to do that!"
         redirect_to '/'
       end
-    else
-      flash[:message] = "Please log in to do that"
-      redirect_to "/login"
-    end
   end
 
   def reviewed_records
     @records = @user.reviewed_records
-    if logged_in?
       if authorized_user?
         render :reviewed_records
       else
         redirect_to '/'
       end
-    else
-      flash[:message] = "Please log in to do that"
-      redirect_to "/login"
-    end
   end
 
 
 
-  def create
+  def create #must be logged in
     @user = User.new(user_params)
     if @user.save
       login!
