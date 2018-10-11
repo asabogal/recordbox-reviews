@@ -23,7 +23,7 @@ class SessionsController < ApplicationController
           login!
           redirect_to user_path(@user)
       else
-          flash.now[:message] = "No such user. Please try again."
+          flash[:message] = "No such user. Please verify crendtials and try again."
           redirect_to '/login'
       end
     end

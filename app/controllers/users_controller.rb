@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :find_user, only: [:show, :recordbox, :reviewed_records]
-  before_action :require_login, except: [:new]
+  before_action :require_login, except: [:new, :create]
 
   def index
     @users = User.all
@@ -39,7 +39,7 @@ class UsersController < ApplicationController
 
 
 
-  def create #must be logged in
+  def create 
     @user = User.new(user_params)
     if @user.save
       login!
