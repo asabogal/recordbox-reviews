@@ -7,3 +7,19 @@
       <%= link_to('Log in with Facebook', '/auth/facebook') %>
     </div>
   </div>
+
+  <h3 class="text-center">Top Ten Tracks</h3>
+
+  <div class="row">
+    <% @records.first(3).each do |record| %>
+      <div class="col-sm-6 col-md-3">
+        <h4 class="text-center"> <%= "#{record.artist} - #{record.title}" %> </h4>
+        <div class="star-rating text-center" data-score= <%= record.review_avg %> ></div><br>
+        <div class="thumbnail">
+          <%= link_to image_tag(record.image, style:'width:100%'), record_path(record) %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <%= render "records/script" %>
