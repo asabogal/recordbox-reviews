@@ -14,8 +14,11 @@ class Record < ApplicationRecord
   validates :genre, presence: true
   validates :tracks, presence: true
 
-  def avg_review
+
+  def review_avg
     self.reviews.average(:rating).to_i
   end
+
+  scope :rating_down, ->{ order("avg_review DESC")}
 
 end

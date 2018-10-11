@@ -11,12 +11,13 @@ class ReviewsController < ApplicationController
   end
 
 
-
+#--------
   def create
     @review = Review.new(review_params)
     @review.user = current_user
     @review.record = Record.find(params[:record_id])
     if @review.save
+      add_average_review
       redirect_to record_path(@review.record)
     else
       flash.now[:message] = "Error. Please try again!"
@@ -28,7 +29,8 @@ class ReviewsController < ApplicationController
     @review = Review.find(params[:id])
       @review.update(review_params)
       if @review.save
-        redirecto_to @review.record
+        add_average_review
+        redirect_to @review.record
       else
         render :edit
       end
@@ -44,6 +46,11 @@ class ReviewsController < ApplicationController
 
   def review_params
     params.require(:review).permit(:rating, :comment, :favorite_track, :record_id)
+  end
+
+  def add_average_review
+    @review.record.avg_review = @review.record.review_avg
+    @review.record.save
   end
 
 end

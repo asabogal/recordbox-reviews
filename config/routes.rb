@@ -12,6 +12,9 @@ Rails.application.routes.draw do
   get '/users/:id/recordbox', to: 'users#recordbox', as: 'user_recordbox'
 
   resources :records do
+    collection do
+      get :rating_down
+    end
     resources :reviews, only: [:new, :create, :edit, :update, :destroy]
   end
 

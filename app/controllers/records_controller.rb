@@ -21,6 +21,11 @@ class RecordsController < ApplicationController
     end
   end
 
+  def rating_down
+    @records = Record.rating_down
+    render action: :index
+  end
+
   #post/patch
   #----
 
