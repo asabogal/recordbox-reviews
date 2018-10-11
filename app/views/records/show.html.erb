@@ -51,6 +51,7 @@
                       <div class="star-rating" data-score= <%= review.rating %> ></div><br>
                       <strong> Favorite Track: </strong>
                       <%= review.favorite_track %></strong><br>
+                        ___________________________________________<br></br>
                       <% if logged_in? && current_user == review.user %>
                       <div class="text-right">
                         <%= link_to "Edit", edit_record_review_path(review.record, review) %> |
@@ -58,7 +59,7 @@
                       </div>
                       <% end %>
                     <% end %>
-                    ___________________________________________<br></br>
+
                 <% end %>
               </div>
           </div>

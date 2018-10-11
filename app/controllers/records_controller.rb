@@ -41,6 +41,7 @@ class RecordsController < ApplicationController
   end
 
   def update
+    binding.pry
     if @record && @record.user == current_user
       @record.update(record_params)
         if @record.save
@@ -73,7 +74,7 @@ class RecordsController < ApplicationController
   end
 
   def record_params
-    params.require(:record).permit(:artist, :title, :label, :format, :cat, :release, :genre, :image, :user_id, tracks_attributes: Track.attribute_names.map(&:to_sym).push(:_destroy))
+    params.require(:record).permit(:artist, :title, :label, :format, :cat, :released, :genre, :image, :user_id, tracks_attributes: Track.attribute_names.map(&:to_sym).push(:_destroy))
   end
 
 end
