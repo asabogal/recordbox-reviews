@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   before_action :find_user, only: [:show, :recordbox, :reviewed_records]
 
   def index
+    @users = User.all
   end
 
   def new

@@ -1,0 +1,8 @@
+<div class="container">
+  <h1>User Index</h1>
+  <div class="container">
+    <% @users.each do |user| %>
+    <%= link_to user.username.titleize, user_path(user) %> <br>
+    <% end %>
+  </div>
+</div>
