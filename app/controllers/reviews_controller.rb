@@ -1,4 +1,5 @@
 class ReviewsController < ApplicationController
+  before_action :find_review, only: [:edit, :update, :destroy]
   before_action :require_login
 
   def new
@@ -7,7 +8,6 @@ class ReviewsController < ApplicationController
   end
 
   def edit
-    @review = Review.find(params[:id])
     @record = Record.find(params[:record_id])
   end
 
@@ -27,7 +27,6 @@ class ReviewsController < ApplicationController
   end
 
   def update
-    @review = Review.find(params[:id])
       @review.update(review_params)
       if @review.save
         add_average_review
@@ -38,7 +37,6 @@ class ReviewsController < ApplicationController
   end
 
   def destroy
-    @review = Review.find(params[:id])
     @review.destroy
     redirect_to record_path(@review.record)
   end
@@ -50,6 +48,7 @@ class ReviewsController < ApplicationController
   end
 
   def find_review
+    @review = Review.find(params[:id])
   end
 
   def add_average_review
