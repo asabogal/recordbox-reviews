@@ -1,8 +1,38 @@
-<h1>Profile Page:</h1>
+<div class="container">
 
-<% if logged_in? %>
-  <h2>Signed in as: <%= @user.username %></h2>
-  <h3>Email: <%= @user.email %></h3>
+  <div class="col-md-2 col-md-offset-5"></div>
+  <h1><%= @user.username.titleize %></h1>
+      <% if logged_in? %>
+      <h3><%= @user.email %></h3>
+      <%= link_to "Reviewed Records", user_reviewed_records_path %> <br>
+        <%= link_to "Log Out", '/logout', {method: 'post'} %>
+      <% end %>
+      <br></br>
 
-  <%= link_to "Log Out", '/logout', {method: 'post'} %>
-<% end %>
+    <div class="row">
+      <div class="pane">
+        <div class="col-sm-3">
+          Member Since:<br>
+        <%= @user.created_at.to_date%><br><br>
+        </div>
+
+      <div class="col-sm-3">
+        Total Reviews:<br>
+        <%= @user.reviewed_records.count %><br><br>
+      </div>
+
+      <div class="col-sm-3">
+        Records in Recodbox:<br>
+        <%= @user.records.count %><br><br>
+      </div>
+
+      <div class="col-sm-3">
+        Last Update:<br>
+        <%= @user.records.last.updated_at.to_date %><br><br>
+      </div>
+
+      </div>
+
+    </div>
+
+</div>

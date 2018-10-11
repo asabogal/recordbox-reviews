@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :find_user, only: [:show, :recordbox]
+  before_action :find_user, only: [:show, :recordbox, :reviewed_records]
 
   def index
   end
@@ -34,8 +34,23 @@ class UsersController < ApplicationController
       flash[:message] = "Please log in to do that"
       redirect_to "/login"
     end
-
   end
+
+  def reviewed_records
+    @records = @user.reviewed_records
+    if logged_in?
+      if authorized_user?
+        render :reviewed_records
+      else
+        redirect_to '/'
+      end
+    else
+      flash[:message] = "Please log in to do that"
+      redirect_to "/login"
+    end
+  end
+
+
 
   def create
     @user = User.new(user_params)
