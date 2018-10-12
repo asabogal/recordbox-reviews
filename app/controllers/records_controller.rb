@@ -44,6 +44,7 @@ class RecordsController < ApplicationController
     @record = Record.new(record_params)
     @record.user = current_user
       if @record.save
+        flash[:success] = "Record successfuly created!"
         redirect_to record_path(@record)
     else
       flash.now[:message] = "<strong>Please try again. There were some errors:</strong><br>".html_safe + @record.errors.full_messages.join("<br/>").html_safe
@@ -55,6 +56,7 @@ class RecordsController < ApplicationController
     if @record && @record.user == current_user
       @record.update(record_params)
         if @record.save
+          flash[:success] = "Record successfuly updated"
           redirect_to record_path(@record)
         else
           flash.now[:message] = "<strong>Please try again. There were some errors:</strong><br>".html_safe + @record.errors.full_messages.join("<br/>").html_safe
@@ -69,6 +71,7 @@ class RecordsController < ApplicationController
   def destroy
     if @record.user == current_user
       @record.delete
+      flash[:success] = "Record successfuly deleted!"
       redirect_to user_recordbox_path(current_user)
     else
       flash.now[:message] = "You don't have permision to do that!"

@@ -17,11 +17,13 @@ class SessionsController < ApplicationController
         u.password = SecureRandom.hex
         end
       login!
+      flash[:success] = "Login successful!"
       redirect_to user_path(@user)
     else
       @user = User.find_by(email: session_params[:email])
       if @user && @user.authenticate(session_params[:password])
           login!
+          flash[:success] = "Login successful!"
           redirect_to user_path(@user)
       else
           flash[:message] = "No such user. Please verify crendtials and try again."
@@ -32,6 +34,7 @@ class SessionsController < ApplicationController
 
   def destroy
     logout!
+    flash[:success] = "Successfully loged out!"
     redirect_to '/'
   end
 

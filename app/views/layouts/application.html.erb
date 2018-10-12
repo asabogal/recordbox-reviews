@@ -16,6 +16,11 @@
       <% end %>
       </div>
 
+      <% if flash[:success] %>
+      <div class="alert alert-success text-center"> <%= flash[:success] %></div>
+      <% end %>
+      </div>
+
     <%= render "/layouts/navigation" %>
 
     <div class="container">
