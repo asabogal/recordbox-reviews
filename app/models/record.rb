@@ -10,9 +10,10 @@ class Record < ApplicationRecord
   validates :label, presence: true
   validates :format, presence: true
   validates :cat, presence: true
-  # validates :released, presence: true
+  validates :released, presence: true
   validates :genre, presence: true
   validates :tracks, presence: true
+  validate :image_validated?
 
 
   def review_avg
@@ -22,5 +23,17 @@ class Record < ApplicationRecord
   scope :rating_desc, ->{ order("avg_review DESC")}
   scope :released_desc, ->{ order("released DESC")}
   scope :released_asc, ->{ order("released ASC")}
+
+  private
+
+  def image_validated?
+    if image.attached? && !image.content_type.in?(%w(image/jpeg image/png))
+      errors.add(:image, 'must be a JPEG or PNG format.')
+    elsif image.attached? == false
+      errors.add(:image, 'must be included')
+    end
+  end
+
+
 
 end

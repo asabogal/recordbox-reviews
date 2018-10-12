@@ -31,7 +31,7 @@
 
       <div class="col-sm-3">
         Last Update:<br>
-        <%= @user.records.last.updated_at.to_date %><br><br>
+        <%= @user.records.last.updated_at.to_date unless @user.records.empty? %><br><br>
       </div>
 
       </div>
