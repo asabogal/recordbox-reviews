@@ -1,22 +1,30 @@
 
-<h1 class="text-center"> Record Index:</h1>
-<div class="text-center">
-<strong>Sort by</strong><br>
-  <%= link_to "Rating", rating_desc_records_path %> |
-  <%= link_to "Newest", released_desc_records_path %> |
-  <%= link_to "Oldest", released_asc_records_path %>
-</div>
-<br></br>
-<div class="row">
-  <% @records.each do |record| %>
-    <div class="col-sm-6 col-md-3">
-      <h4 class="text-center"> <%= "#{record.artist} - #{record.title}" %> </h4>
-      <div class="star-rating text-center" data-score= <%= record.review_avg %> ></div><br>
-      <div class="thumbnail">
-        <%= link_to image_tag(record.image, style:'width:100%'), record_path(record) %>
-      </div>
-    </div>
-  <% end %>
-</div>
+  <div class="row">
+    <h1 class="text-center"> Record Index</h1>
+  </div>
 
-<%= render "script" %>
+  <div class="text-center">
+  Count: <%= @records.count %>
+  </div>
+  <br>
+  <div class="text-center">
+  <strong>Sort by</strong><br>
+    <%= link_to "Rating", rating_desc_records_path %> |
+    <%= link_to "Newest", released_desc_records_path %> |
+    <%= link_to "Oldest", released_asc_records_path %>
+  </div>
+  <br></br>
+  <div class="row">
+    <% @records.each do |record| %>
+      <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+          <h4 class="text-center"> <%= record.title %></h4>
+          <h5 class="text-center"> <%= record.artist  %></h5>
+            <div class="star-rating text-center" data-score=<%= record.review_avg %> ></div><br>
+            <div class="thumbnail">
+          <%= link_to image_tag(record.image, style:'width:100%'), record_path(record) %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <%= render "script" %>
