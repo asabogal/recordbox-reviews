@@ -20,26 +20,15 @@ class UsersController < ApplicationController
 
   def recordbox
     @records = @user.records
-      if authorized_user?
-        render :recordbox
-      else
-        flash[:message] = "You don't have permision to do that!"
-        redirect_to '/'
-      end
   end
 
   def reviewed_records
     @records = @user.reviewed_records
-      if authorized_user?
-        render :reviewed_records
-      else
-        redirect_to '/'
-      end
   end
 
 
 
-  def create 
+  def create
     @user = User.new(user_params)
     if @user.save
       login!

@@ -4,9 +4,12 @@
   <% @records.each do |record| %>
     <div class="col-sm-6 col-md-3">
       <h4 class="text-center"> <%= "#{record.artist} - #{record.title}" %> </h4>
+      <div class="star-rating text-center" data-score= <%= record.review_avg %> ></div><br>
       <div class="thumbnail">
         <%= link_to image_tag(record.image, style:'width:100%'), record %>
       </div>
     </div>
   <% end %>
 </div>
+
+<%= render "records/script" %>

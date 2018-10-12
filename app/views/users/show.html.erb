@@ -2,10 +2,13 @@
 
   <div class="col-md-2 col-md-offset-5"></div>
   <h1><%= @user.username.titleize %></h1>
-      <% if logged_in? %>
+      <% if logged_in? && authorized_user? %>
       <h3><%= @user.email %></h3>
       <%= link_to "Reviewed Records", user_reviewed_records_path %> <br>
         <%= link_to "Log Out", '/logout', {method: 'post'} %>
+        <% else %>
+          <%= link_to "Recordbox", user_recordbox_path %><br>
+          <%= link_to "Reviewed Records", user_reviewed_records_path %> <br>
       <% end %>
       <br></br>
 
