@@ -1,10 +1,9 @@
-
-  <div class="row">
+<div class="row">
     <h1 class="text-center"> Record Index</h1>
   </div>
 
   <div class="text-center">
- (Count: <%= @records.count %>)  
+    (Count: <%= @records.count %>)
   </div>
   <br>
   <div class="text-center">
@@ -14,7 +13,6 @@
     <%= link_to "Oldest", released_asc_records_path %>
   </div>
   <br></br>
-  <div class="container">
     <div class="row">
       <% @records.each do |record| %>
         <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
@@ -22,11 +20,10 @@
             <h5 class="text-center"> <%= record.artist  %></h5>
               <div class="star-rating text-center" data-score=<%= record.review_avg %> ></div><br>
               <div class="thumbnail">
-            <%= link_to image_tag(record.image, style:'width:100%'), record_path(record) %>
+            <%= link_to image_tag(record.image, style:'width:auto'), record_path(record) %>
           </div>
         </div>
       <% end %>
     </div>
-  </div>
 
   <%= render "script" %>
