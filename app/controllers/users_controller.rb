@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :find_user, only: [:show, :recordbox, :reviewed_records]
+  before_action :find_user, only: [:show, :recordbox, :recordbox_rating, :recordbox_desc, :recordbox_asc, :reviewed_records]
   before_action :require_login, except: [:new, :create]
 
   def index
@@ -20,6 +20,21 @@ class UsersController < ApplicationController
 
   def recordbox
     @records = @user.records
+  end
+
+  def recordbox_rating
+    @records = @user.records.order(avg_review: :desc)
+    render action: :recordbox
+  end
+
+  def recordbox_desc
+    @records = @user.records.order(released: :desc)
+    render action: :recordbox
+  end
+
+  def recordbox_asc
+    @records = @user.records.order(released: :asc)
+    render action: :recordbox
   end
 
   def reviewed_records

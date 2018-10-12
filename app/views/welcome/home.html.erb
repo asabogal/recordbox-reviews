@@ -11,7 +11,7 @@
   <h3 class="text-center">Top Rated Records</h3><br>
 
   <div class="row">
-    <% @records.first(3).each do |record| %>
+    <% @records.first(8).each do |record| %>
       <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
         <h4 class="text-center"> <%= record.title %></h4>
         <h5 class="text-center"> <%= record.artist  %></h5>

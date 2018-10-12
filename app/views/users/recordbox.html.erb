@@ -1,5 +1,16 @@
 <h1 class="text-center"><%="#{@user.username.titleize}'s Recordbox"%></h1>
+
+<div class="text-center">
+(Count: <%= @records.count %>)
+</div>
 <br>
+<div class="text-center">
+<strong>Sort by</strong><br>
+  <%= link_to "Rating", user_recordbox_rating_path %> |
+  <%= link_to "Newest", user_recordbox_desc_path %> |
+  <%= link_to "Oldest", user_recordbox_asc_path %>
+</div>
+
 <div class="row">
   <% @records.each do |record| %>
     <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
