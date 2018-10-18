@@ -1,8 +1,8 @@
 
-##Recordbox Reviews - Ruby on Rails App
+#Recordbox Reviews - Ruby on Rails App
 
 
-##Introduction
+#Introduction
 
 This is a CRUD (Create, Read, Update and Delete) web app with a back-end built on Ruby on Rails and the front-end built with Bootstrap. This is my third project for the Flatiron School, Web Developer program.
 
@@ -11,7 +11,7 @@ This app helps users keep track of their vinyl record collection (or Recordbox) 
 A user must be logged in and authenticated in order to edit and/or delete his/her collection and review records. Also a logged in user can only add or edit their own content. For user authentication, username and password validators were created with a combination of Ruby and RegEx.
 
 
-##Installation and Usage
+#Installation and Usage
 
 -- Must have Rails installed! --
 
