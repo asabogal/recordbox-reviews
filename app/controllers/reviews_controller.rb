@@ -15,7 +15,7 @@ class ReviewsController < ApplicationController
 #--------
   def create
     @review = Review.new(review_params)
-    @review.user = current_user
+    @review.reviewer = current_user
     @review.record = Record.find(params[:record_id])
     if @review.save
       add_average_review
