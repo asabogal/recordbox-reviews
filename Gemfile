@@ -1,8 +1,6 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.3.3'
-
 gem 'rails', '~> 5.2.1'
 gem 'pg'
 gem 'puma', '~> 3.11'
@@ -43,3 +41,5 @@ group :test do
   gem 'selenium-webdriver'
   gem 'chromedriver-helper'
 end
+
+ruby '2.3.3'
