@@ -25,8 +25,85 @@
 @import "bootstrap-custom";
 
 footer.branding {
-    border-top: 2px solid #ccc;
+    border-top: 2px solid #ccc; 
     margin-top: 20px;
     padding-top: 20px;
     background-color: #F8F8F8;
+  }
+
+  .records-container {
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+    grid-gap: 1em;
+    justify-content: center
+  };
+
+  .record-show {
+    display: grid;
+    grid-template-columns: auto 40% auto;
+    grid-gap: 3em;
+    justify-content: center;
+    padding: 20px;
+  };
+
+  @media all and (max-width: 995px) and (min-width: 650px) {
+    .records-container {
+      display: grid;
+      grid-template-columns: 33% 33% 33%;
+      grid-gap: 1em;
+      justify-content: center
+    };
+  }
+
+  @media all and (max-width: 650px) and (min-width: 450px) {
+    .records-container {
+      display: grid;
+      grid-template-columns: 50% 50%;
+      grid-gap: 1em;
+      justify-content: center
+    };
+  }
+
+  @media all and (max-width: 450px){
+    .records-container {
+      display: grid;
+      grid-template-columns: 100%;
+      grid-gap: 1em;
+      justify-content: center
+    };
+  }
+
+  @media all and (max-width: 1100px) and (min-width: 1030px) {
+    .record-show {
+      display: grid;
+      grid-template-columns: 33% 33% auto;
+      grid-gap: 3em;
+      justify-content: center;
+      padding: 20px;
+    };
+  }
+
+  @media all and (max-width: 1030px) and (min-width: 885px) {
+    .record-show {
+      display: grid;
+      grid-template-columns: auto auto auto;
+      grid-gap: 3em;
+      justify-content: center;
+      padding: 20px;
+    };
+  }
+
+  @media all and (max-width: 885px) {
+    .record-show {
+      display: grid;
+      grid-template-columns: auto;
+      grid-gap: 3em;
+      justify-content: center;
+      justify-items: center;
+      padding: 20px;
+    };
+
+    .reviews {
+      text-align: center;
+    }
   }
