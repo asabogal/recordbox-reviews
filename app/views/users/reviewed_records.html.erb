@@ -1,17 +1,6 @@
 <h1 class="text-center"><%="#{@user.username.titleize}'s Reviewed Records"%></h1>
 <br>
 
-<div class="row">
-  <% @records.each do |record| %>
-    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
-      <h4 class="text-center"> <%= record.title %></h4>
-      <h5 class="text-center"> <%= record.artist  %></h5>
-      <div class="star-rating text-center" data-score= <%= record.review_avg %> ></div><br>
-      <div class="thumbnail">
-        <%= link_to image_tag(record.image, style:'width:100%'), record %>
-      </div>
-    </div>
-  <% end %>
-</div>
+<%= render "/layouts/records_container" %>
 
 <%= render "records/script" %>

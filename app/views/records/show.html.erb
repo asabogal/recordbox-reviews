@@ -1,74 +1,68 @@
 
-    <div class="row">
-      <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
-        <div class="container center-text">
-          <div class="container">
-            <div style="width:290px; height:auto">
-              <%= image_tag(@record.image, style:'width:100%') %>
-            </div>
-            <br>
-          </div>
+<div class="record-show">
+
+      <div class="record-image">
+        <div class="text-center" style="width:290px; height:auto">
+          <%= image_tag(@record.image, style:'width:100%') %>
         </div>
-          <div class="">
-            <%= link_to "Add Review", new_record_review_path(@record), class: 'btn btn-primary btn-block' if logged_in? && !review_owner %>
-            <% if logged_in? && current_user == @record.user %>
-              <%= link_to "Edit Record", edit_record_path(@record), class: 'btn btn-primary btn-block' %>
-              <%= link_to "Delete Record", @record, method: :delete, data: { confirm: "Are you sure you want to delete this record?" }, class: 'btn btn-danger btn-block offset-2' %>
-            <% end %>
-          </div>
+        <br>
+        <%= link_to "Add Review", new_record_review_path(@record), class: 'btn btn-primary btn-block' if logged_in? && !review_owner %>
+        <% if logged_in? && current_user == @record.user %>
+        <%= link_to "Edit Record", edit_record_path(@record), class: 'btn btn-primary btn-block' %>
+        <%= link_to "Delete Record", @record, method: :delete, data: { confirm: "Are you sure you want to delete this record?" }, class: 'btn btn-danger btn-block offset-2' %>
+        <% end %>
+      </div>
 
-        </div>
-          <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
-            <div class="top">
-              <h2> <strong><%= @record.artist.upcase %></strong> </h2>
-              <h3><%= @record.title %></h3>
-              <h4><%= @record.label %></h4>
-            </div>
-            <br>
-              <div class="meta-record">
-                <strong>Format:</strong> <%= @record.format %>
-                <br><strong>Cat:</strong> <%= @record.cat %>
-                <br><strong>Released:</strong> <%= @record.released %>
-                <br><strong>Genre:</strong> <%= @record.genre %>
-              </div>
-              <table class="table borderless">
-                <tbody>
-                  <tr>
-                    <td> <h3>Tracklist</h3> </td>
-                    <tr>
-                      <% @record.tracks.each_with_index do |t, i| %>
-                    </tr>
-                    <td><%= "#{i+1} - #{t.name}" %>  </td>  <br>
-                    <% end %>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
+    <div class="record-info">
+        <h2> <strong><%= @record.artist.upcase %></strong> </h2>
+        <h3><%= @record.title %></h3>
+        <h4><%= @record.label %></h4>
+        <strong>Format:</strong> <%= @record.format %>
+        <br><strong>Cat:</strong> <%= @record.cat %>
+        <br><strong>Released:</strong> <%= @record.released %>
+        <br><strong>Genre:</strong> <%= @record.genre %>
 
-            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
-              <% if !@record.reviews.empty?  %>
-                <h2 class="text-center">Reviews</h2>
+        <table class="table borderless">
+          <tbody>
+            <tr>
+              <td> <h3>Tracklist</h3> </td>
+              <tr>
+                <% @record.tracks.each_with_index do |t, i| %>
+              </tr>
+              <td><%= "#{i+1} - #{t.name}" %>  </td>  <br>
+              <% end %>
+            </tr>
+          </tbody>
+        </table>
+      </div>
 
-                <div class="reviews">
-                <% @record.reviews.each do |review| %>
-                    <p> <strong> <%= link_to review.reviewer.username.titleize, user_path(review.reviewer) %> says: </strong>
-                      <p>"<%= review.comment %>"</p>
-                      <div class="star-rating" data-score=<%= review.rating %>></div><br>
-                      <strong> Favorite Track: </strong>
-                      <%= review.favorite_track %></strong><br>
-                      <% if logged_in? && current_user == review.reviewer %>
-                      <div class="text-right">
-                        <%= link_to "Edit", edit_record_review_path(review.record, review) %> |
-                        <%= link_to "Remove", record_review_path(review.record, review), method: :delete %>
-                      </div>
-                      <% end %>
-                        ___________________________________________<br></br>
+      
+        <% if !@record.reviews.empty?  %>
+        <div class="reviews">
+          <h2 class="text-center">Reviews</h2>
 
-                    <% end %>
-
+          <div class="review-info">
+          <% @record.reviews.each do |review| %>
+              <p> <strong> <%= link_to review.reviewer.username.titleize, user_path(review.reviewer) %> says: </strong>
+                <p>"<%= review.comment %>"</p>
+                <div class="star-rating" data-score=<%= review.rating %>></div><br>
+                <strong> Favorite Track: </strong>
+                <%= review.favorite_track %></strong><br>
+                <% if logged_in? && current_user == review.reviewer %>
+                <div class="text-right">
+                  <%= link_to "Edit", edit_record_review_path(review.record, review) %> |
+                  <%= link_to "Remove", record_review_path(review.record, review), method: :delete %>
+                </div>
                 <% end %>
-              </div>
+                  ___________________________________________<br></br>
+
+              <% end %>
+
+          <% end %>
           </div>
+      </div> 
+
+</div>           
 
 
 <%= render "script" %>

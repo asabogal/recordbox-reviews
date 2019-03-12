@@ -13,17 +13,6 @@
   <%= link_to "Oldest", user_recordbox_asc_path %>
 </div>
 <br></br>
-<div class="row">
-  <% @records.each do |record| %>
-    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
-      <h4 class="text-center"> <%= record.title %></h4>
-      <h5 class="text-center"> <%= record.artist  %></h5>
-      <div class="star-rating text-center" data-score= <%= record.review_avg %> ></div><br>
-      <div class="thumbnail">
-        <%= link_to image_tag(record.image, style:'width:110%'), record_path(record) %>
-      </div>
-    </div>
-  <% end %>
-</div>
+<%= render "/layouts/records_container" %>
 
 <%= render "records/script" %>
