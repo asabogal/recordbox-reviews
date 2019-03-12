@@ -14,7 +14,7 @@
     <% @records.first(8).each do |record| %>
       <div class="record-card">
         <h4 class="text-center"> <%= record.title %></h4>
-        <h5 class="text-center"> <%= record.artist  %></h5>
+        <h5 class="text-center"> <%= record.artist.upcase  %></h5>
         <div class="star-rating text-center" data-score= <%= record.review_avg %> ></div><br>
         <div class="thumbnail">
           <%= link_to image_tag(record.image, style:'width:100%'), record_path(record) %>
