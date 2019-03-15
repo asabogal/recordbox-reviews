@@ -18,6 +18,7 @@
 !/tmp/.keep
 
 *.env
+/config/secrets/*
 
 /node_modules
 /yarn-error.log
